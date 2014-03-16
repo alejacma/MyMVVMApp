@@ -1,0 +1,60 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="MyMVVMApp.Views.AboutInfoPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True"
+    shell:SystemTray.ForegroundColor="{StaticResource PhoneAccentColor}"
+    DataContext="{Binding Path=AboutInfoViewModel, Source={StaticResource ViewModelLocator}}">
+
+    <!-- La página -->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Cabecera de la página -->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock 
+                Text="{Binding Path=LocalizedResources.App_Title, Source={StaticResource LocalizedStrings}}" 
+                Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock 
+                Text="{Binding Path=LocalizedResources.AboutInfo_Title, Source={StaticResource LocalizedStrings}}"
+                Margin="9,-7,0,0" 
+                Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <!-- Contenido de la página -->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <StackPanel 
+                Margin="10,0,0,0"
+                Orientation="Vertical">
+                
+                <!-- Versión -->
+                <TextBlock 
+                    Text="{Binding Path=LocalizedResources.AboutInfo_Version, Source={StaticResource LocalizedStrings}}" />
+                <TextBlock 
+                    Text="{Binding Path=LocalizedResources.App_Version, Source={StaticResource LocalizedStrings}}" 
+                    Foreground="{StaticResource PhoneAccentBrush}"/>
+                
+                <!-- Contacto y Soporte -->
+                <TextBlock 
+                    Text="{Binding Path=LocalizedResources.AboutInfo_ContactAndSupport, Source={StaticResource LocalizedStrings}}" 
+                    Margin="0,10,0,0"/>
+                <TextBlock 
+                    Text="{Binding Path=LocalizedResources.App_ContactEmail, Source={StaticResource LocalizedStrings}}" 
+                    Foreground="{StaticResource PhoneAccentBrush}"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>
